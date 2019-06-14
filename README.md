@@ -7,4 +7,4 @@ Requirements:
   - Python 3.7.3
   - togglCli for python (pip install togglCli)
   
-For the usage of togglCli see the documentation page: https://coast.xpeppers.com/#tutorial/togglcli.html
+For the usage and installation of togglCli see the documentation page: https://coast.xpeppers.com/#tutorial/togglcli.html
