@@ -1,11 +1,15 @@
 #!/bin/sh/
 
 
+COMMAND='toggl'
+MSG_MATTINA='mattina'
+MSG_POMERIGGIO='pomeriggio'
+
 function this_day()
 {
     DATE=`gdate -u +%Y-%m-%d`
-    toggl add "$DATE 9:00AM" "$DATE 1:00PM" "mattina"
-    toggl add "$DATE 2:00PM" "$DATE 6:00PM" "pomeriggio"
+    $COMMAND add "$DATE 9:00AM" "$DATE 1:00PM" "$MSG_MATTINA"
+    $COMMAND add "$DATE 2:00PM" "$DATE 6:00PM" "$MSG_POMERIGGIO"
 
 }
 
@@ -18,8 +22,8 @@ function this_week()
     # set for each day two time slot
     for index in `seq 1 1 5`; do
         DATE=`gdate -d $(($index-$INDEX_CURRENT_DAY))-days +%Y-%m-%d`
-        toggl add "$DATE 9:00AM" "$DATE 1:00PM" "mattina"
-        toggl add "$DATE 2:00PM" "$DATE 6:00PM" "pomeriggio"
+        $COMMAND add "$DATE 9:00AM" "$DATE 1:00PM" "$MSG_MATTINA"
+        $COMMAND add "$DATE 2:00PM" "$DATE 6:00PM" "$MSG_POMERIGGIO"
     done
 }
 
@@ -35,8 +39,8 @@ function this_month()
         weekend_check=`gdate -d $(($index-$INDEX_CURRENT_DAY))-days +%u`
         if [ "$weekend_check" -le "5" ]; then
             DATE=`gdate -d $(($index-$INDEX_CURRENT_DAY))-days +%Y-%m-%d`
-            toggl add "$DATE 9:00AM" "$DATE 1:00PM" "mattina"
-            toggl add "$DATE 2:00PM" "$DATE 6:00PM" "pomeriggio"
+            $COMMAND add "$DATE 9:00AM" "$DATE 1:00PM" "$MSG_MATTINA"
+            $COMMAND add "$DATE 2:00PM" "$DATE 6:00PM" "$MSG_POMERIGGIO"
         fi
     done
 }
@@ -53,8 +57,8 @@ function range_same_month()
                 weekend_check=`gdate -d $(($index-$INDEX_CURRENT_DAY))-days +%u`
                 if [ "$weekend_check" -le "5" ]; then
                     DATE=`gdate -d $(($index-$INDEX_CURRENT_DAY))-days +%Y-%m-%d`
-                    toggl add "$DATE 9:00AM" "$DATE 1:00PM" "mattina"
-                    toggl add "$DATE 2:00PM" "$DATE 6:00PM" "pomeriggio"
+                    $COMMAND add "$DATE 9:00AM" "$DATE 1:00PM" "$MSG_MATTINA"
+                    $COMMAND add "$DATE 2:00PM" "$DATE 6:00PM" "$MSG_POMERIGGIO"
                 fi
             done
         else
@@ -77,8 +81,8 @@ function range()
                 weekend_check=`gdate -d $(($index-$INDEX_CURRENT_DAY))-days +%u`
                 if [ "$weekend_check" -le "5" ]; then
                     DATE=`gdate -d $(($index-$INDEX_CURRENT_DAY))-days +%Y-%m-%d`
-                    toggl add "$DATE 9:00AM" "$DATE 1:00PM" "mattina"
-                    toggl add "$DATE 2:00PM" "$DATE 6:00PM" "pomeriggio"
+                    $COMMAND add "$DATE 9:00AM" "$DATE 1:00PM" "$MSG_MATTINA"
+                    $COMMAND add "$DATE 2:00PM" "$DATE 6:00PM" "$MSG_POMERIGGIO"
                 fi
             done
         else
@@ -93,8 +97,8 @@ function range()
                 weekend_check=`gdate -d $(($index-$INDEX_CURRENT_DAY))-days +%u`
                 if [ "$weekend_check" -le "5" ]; then
                     DATE=`gdate -d $(($index-$INDEX_CURRENT_DAY))-days +%Y-%m-%d`
-                    toggl add "$DATE 9:00AM" "$DATE 1:00PM" "mattina"
-                    toggl add "$DATE 2:00PM" "$DATE 6:00PM" "pomeriggio"
+                    $COMMAND add "$DATE 9:00AM" "$DATE 1:00PM" "$MSG_MATTINA"
+                    $COMMAND add "$DATE 2:00PM" "$DATE 6:00PM" "$MSG_POMERIGGIO"
                 fi
             done
         fi
