@@ -103,6 +103,33 @@ function range()
     fi
 }
 
-range 26 14
+usage()
+{
+cat << EOF
+Usage:
 
+To record a range: $0 <startday> <endday>
 
+To run a function: $0 [this_month, this_week, this_day]
+
+Wrapper to toggl cli.
+
+EOF
+}
+
+function run_function()
+{
+    case $1 in
+    'this_month')this_month;;
+    'this_week')this_week;;
+    'this_day')this_day;;
+    *)echo "function not valid";;
+    esac
+}
+
+case $# in
+  0)usage;;
+  1)run_function $1;;
+  2)range $1 $2;;
+  *)usage;;
+esac
