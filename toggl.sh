@@ -69,7 +69,7 @@ function range_same_month()
 function range()
 {
     if [ $# -eq 2 ]; then
-        if [ $1 -lt $2 ]; then
+        if [ $1 -le $2 ]; then
             # find the current day index
             INDEX_CURRENT_DAY=`gdate +%d`
             # set for each working day two time slot
