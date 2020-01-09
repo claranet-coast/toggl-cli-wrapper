@@ -33,7 +33,7 @@ function this_week()
 function this_month()
 {
     # find the current day index
-    INDEX_CURRENT_DAY=`gdate +%d`
+    INDEX_CURRENT_DAY=`gdate +%d | sed s/^0//g`
     # find the number of days in this month
     AMOUNT_DAYS_MONTH=`echo $(cal) | tail -c 3`
     # set for each working day two time slot
@@ -53,7 +53,7 @@ function range_same_month()
     if [ $# -eq 2 ]; then
         if [ $1 -lt $2 ]; then
             # find the current day index
-            INDEX_CURRENT_DAY=`gdate +%d`
+            INDEX_CURRENT_DAY=`gdate +%d | sed s/^0//g`
             # set for each working day two time slot
             for index in `seq $1 1 $2`; do
                 weekend_check=`gdate -d $(($index-$INDEX_CURRENT_DAY))-days +%u`
@@ -77,7 +77,7 @@ function range()
     if [ $# -eq 2 ]; then
         if [ $1 -le $2 ]; then
             # find the current day index
-            INDEX_CURRENT_DAY=`gdate +%d`
+            INDEX_CURRENT_DAY=`gdate +%d | sed s/^0//g`
             # set for each working day two time slot
             for index in `seq $1 1 $2`; do
                 weekend_check=`gdate -d $(($index-$INDEX_CURRENT_DAY))-days +%u`
@@ -89,7 +89,7 @@ function range()
             done
         else
             # find the current day index
-            INDEX_CURRENT_DAY=`gdate +%d`
+            INDEX_CURRENT_DAY=`gdate +%d | sed s/^0//g`
             # find the current month index
             INDEX_CURRENT_MONTH=`gdate +%m`
             # find the number of days in this month
